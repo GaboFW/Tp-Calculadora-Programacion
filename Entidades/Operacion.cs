@@ -13,24 +13,28 @@ namespace Entidades
             this.segundoOperando = segundoOperando;
         }
 
-        public Numeracion GetPrimerOperando()
+        public Numeracion PrimerOperando
         {
-            return this.primerOperando;
+            get
+            {
+                return primerOperando;
+            }
+            set
+            {
+                primerOperando = value;
+            }
         }
 
-        public void SetPrimerOperando(Numeracion segundoOperando)
+        public Numeracion SegundoOperando
         {
-            this.primerOperando = segundoOperando;
-        }
-
-        public Numeracion GetSegundoOperando()
-        {
-            return this.segundoOperando;
-        }
-
-        public void SetSegundoOperando(Numeracion segundoOperando)
-        {
-            this.segundoOperando = segundoOperando;
+            get
+            {
+                return segundoOperando;
+            }
+            set
+            {
+                this.segundoOperando = value;
+            }
         }
 
         public Numeracion Operar(char operador)

@@ -18,10 +18,20 @@ namespace Calculadora___Integrador
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FrmCalculadora_Load(object sender, EventArgs e)
         {
             this.cmbOperacion.DataSource = new object[] { "", "+", "-", "/", "*" };
             this.rdbDecimal.Checked = true;
+        }
+
+        private void FrmCalculadora_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult ventanaCerrar = MessageBox.Show("Desea cerrar la calculadora?", "Cerrar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ventanaCerrar == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -44,22 +54,12 @@ namespace Calculadora___Integrador
             char operador;
 
             bool resultado = char.TryParse(cmbOperacion.Text, out operador);
-
+            
             Numeracion resultadoFinal = opero.Operar(operador);
 
-            this.labelResultado.Text = resultadoFinal.GetValorNumerico();
+            this.labelResultado.Text = resultadoFinal.ValorNumerico;
         }
         
-        private void FrmCalculadora_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult ventanaCerrar = MessageBox.Show("Desea cerrar la calculadora?", "Cerrar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (ventanaCerrar == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-        }
-
         private void rdbBinario_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbBinario.Checked)
@@ -74,6 +74,10 @@ namespace Calculadora___Integrador
             {
                 this.sistema = ESistema.Decimal;
             }
+        }
+        private void SetResultado()
+        {
+            
         }
 
         private void txtPrimerOperando_TextChanged(object sender, EventArgs e)
@@ -90,5 +94,7 @@ namespace Calculadora___Integrador
         {
             string resultadoLabel = labelResultado.Text;
         }
+
+        
     }
 }

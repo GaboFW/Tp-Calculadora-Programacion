@@ -211,7 +211,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculadora de Gabriel Fernandez Waisberg";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCalculadora_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FrmCalculadora_Load);
             this.grpRepresentarResultado.ResumeLayout(false);
             this.grpRepresentarResultado.PerformLayout();
             this.ResumeLayout(false);

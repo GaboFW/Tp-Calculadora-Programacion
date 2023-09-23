@@ -38,7 +38,7 @@ namespace Entidades
             }
         }
 
-        public string GetValor
+        public string Valor
         {
             get
             {
@@ -47,24 +47,31 @@ namespace Entidades
 
         }
 
-        // Convertir el valor a binario o a decimal
+        /// <summary>
+        /// Convertir el valor decimal a binario y viceversa
+        /// </summary>
+        /// <param name="eSistema"></param>
+        /// <returns></returns>
         public string ConvertirA(ESistema eSistema)
         {
-            if (this.sistema == eSistema)
-            {
-                return this.valor;
-            }
-            else if (ESistema.Decimal == eSistema)
+            // Decimal a binario
+            if (ESistema.Decimal == eSistema)
             {
                 return this.BinarioADecimal(this.valor).ToString();
             }
+
+            // Binario a decimal
             else
             {
                 return this.DecimalABinario(this.valor).ToString();
             }
         }
 
-        // De binario a decimal
+        /// <summary>
+        /// De binario a decimal
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <returns></returns>
         private double BinarioADecimal(string valor)
         {
             if (EsBinario(valor) == true)
@@ -77,17 +84,22 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Metodo decimal a binario
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <returns></returns>
         private string DecimalABinario(int valor)
         {
-            if (EsBinario(Convert.ToString(valor)))
+            if (EsBinario(valor.ToString()))
             {
-                return Convert.ToString(valor);
+                return valor.ToString();
             }
             else
             {
                 return "Numero Invalido";
             }
-            /*
+           /*
             if (valor == 0)
             {
                 return "0";
@@ -101,15 +113,19 @@ namespace Entidades
                 valor = valor / 2;
             }
             return resultado;
-            */
+           */
         }
 
-        // De decimal a Binario
+        /// <summary>
+        /// De decimal a Binario
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <returns></returns>
         private string DecimalABinario(string valor)
         {
             if (EsBinario(valor) == false)
             {
-                return Convert.ToString(valor);
+                return valor.ToString();
             }
             else
             {
@@ -117,12 +133,16 @@ namespace Entidades
             }
         }
 
-        // Logica para saber si es o no binario
+        /// <summary>
+        /// Logica para saber si es o no binario
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <returns></returns>
         private bool EsBinario(string valor)
         {
             foreach (char c in valor)
             {
-                if (c != '0' && c != '1')
+                if (c.ToString() != "0" && c.ToString() != "1")
                 {
                     return false;
                 }
@@ -132,13 +152,14 @@ namespace Entidades
 
         private void InicializarValores(string valor, ESistema sistema)
         {
-            if (!string.IsNullOrEmpty(valor) && ESistema.Binario == sistema)
+
+            if (!string.IsNullOrEmpty(valor) && (sistema == ESistema.Binario))
             {
-                this.valorNumerico = this.BinarioADecimal(valor);
+                this.valorNumerico = BinarioADecimal(valor);
             }
-            else if (double.TryParse(valor, out double esDecimal))
+            else if (sistema == ESistema.Decimal)
             {
-                this.valorNumerico = esDecimal;
+                this.valorNumerico = double.Parse(valor);
             }
             else
             {
