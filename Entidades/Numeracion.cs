@@ -91,19 +91,11 @@ namespace Entidades
         /// <returns></returns>
         private string DecimalABinario(int valor)
         {
-            if (EsBinario(valor.ToString()))
-            {
-                return valor.ToString();
-            }
-            else
-            {
-                return "Numero Invalido";
-            }
-           /*
             if (valor == 0)
             {
                 return "0";
             }
+
             string resultado = "";
 
             while (valor > 0)
@@ -113,7 +105,6 @@ namespace Entidades
                 valor = valor / 2;
             }
             return resultado;
-           */
         }
 
         /// <summary>
@@ -142,7 +133,7 @@ namespace Entidades
         {
             foreach (char c in valor)
             {
-                if (c.ToString() != "0" && c.ToString() != "1")
+                if (c.ToString() != "0" || c.ToString() != "1")
                 {
                     return false;
                 }
