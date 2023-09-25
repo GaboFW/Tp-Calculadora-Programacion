@@ -1,6 +1,5 @@
 ﻿using Entidades;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Calculadora___Integrador
@@ -46,22 +45,23 @@ namespace Calculadora___Integrador
             this.cmbOperacion.Text = "";
             this.labelResultado.Text = "";
         }
-        
+
         private void btnOperar_Click(object sender, EventArgs e)
         {
-            //Operacion opero = new Operacion(new Numeracion(txtPrimerOperando.Text, this.sistema), new Numeracion(txtSegundoOperando.Text, this.sistema));
+            char operador;
 
-            //char operador;
+            primerOperando = new Numeracion(txtPrimerOperando.Text, ESistema.Decimal);
+            segundoOperando = new Numeracion(txtSegundoOperando.Text, ESistema.Decimal);
 
-            //bool resultado = char.TryParse(cmbOperacion.Text, out operador);
-            
-            //Numeracion resultadoFinal = opero.Operar(operador);
+            calculadora = new Operacion(primerOperando, segundoOperando);
 
-            //this.labelResultado.Text = resultadoFinal.ValorNumerico;
+            bool resultadoChar = char.TryParse(cmbOperacion.Text, out operador);
+
+            this.resultado = calculadora.Operar(operador);
 
             SetResultado();
         }
-        
+
         private void rdbBinario_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbBinario.Checked)
@@ -80,22 +80,7 @@ namespace Calculadora___Integrador
 
         private void SetResultado()
         {
-            Operacion opero = new Operacion(new Numeracion(txtPrimerOperando.Text, this.sistema), new Numeracion(txtSegundoOperando.Text, this.sistema));
-
-            char operador;
-
-            bool resultado = char.TryParse(cmbOperacion.Text, out operador);
-
-            Numeracion resultadoFinal = opero.Operar(operador);
-
-            if (this.sistema == ESistema.Binario)
-            {
-                labelResultado.Text = Convert.ToString(resultadoFinal.ConvertirA(ESistema.Binario));
-            }
-            else
-            {
-                labelResultado.Text = resultadoFinal.ValorNumerico;
-            }
+            this.labelResultado.Text = resultado.ConvertirA(this.sistema);
         }
 
         private void txtPrimerOperando_TextChanged(object sender, EventArgs e)
@@ -112,7 +97,5 @@ namespace Calculadora___Integrador
         {
             string resultadoLabel = labelResultado.Text;
         }
-
-        
     }
 }

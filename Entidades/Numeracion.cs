@@ -7,7 +7,6 @@ namespace Entidades
     public class Numeracion
     {
         private ESistema sistema;
-        private string valor;
         private double valorNumerico;
 
         public Numeracion(double valorNumerico, ESistema sistema)
@@ -30,43 +29,33 @@ namespace Entidades
 
         }
 
-        public string ValorNumerico
+        public string Valor
         {
             get
             {
                 return valorNumerico.ToString();
             }
         }
-
-        public string Valor
-        {
-            get
-            {
-                return valor;
-            }
-
-        }
-
+        
         /// <summary>
         /// Convertir el valor decimal a binario y viceversa
         /// </summary>
         /// <param name="eSistema"></param>
         /// <returns></returns>
-        public string ConvertirA(ESistema eSistema)
+        public string ConvertirA(ESistema sistema)
         {
             // Decimal a binario
-            if (ESistema.Decimal == eSistema)
+            if (sistema == ESistema.Binario)
             {
-                return this.BinarioADecimal(this.valor).ToString();
+                // Si es decimal y lo queres convertir a binario
+                return this.DecimalABinario(this.Valor);
             }
-
-            // Binario a decimal
             else
             {
-                return this.DecimalABinario(this.valor).ToString();
+                return this.Valor;
             }
         }
-
+        
         /// <summary>
         /// De binario a decimal
         /// </summary>
@@ -91,20 +80,22 @@ namespace Entidades
         /// <returns></returns>
         private string DecimalABinario(int valor)
         {
-            if (valor == 0)
+            if (valor > 0)
             {
-                return "0";
+                string binario = "";
+
+                while (valor > 0)
+                {
+                    binario = valor % 2 + binario;
+                    valor /= 2;
+                }
+
+                return binario;
             }
-
-            string resultado = "";
-
-            while (valor > 0)
+            else
             {
-                int residuo = valor % 2;
-                resultado = residuo + resultado;
-                valor = valor / 2;
+                return "Valor invalido";
             }
-            return resultado;
         }
 
         /// <summary>
@@ -114,13 +105,28 @@ namespace Entidades
         /// <returns></returns>
         private string DecimalABinario(string valor)
         {
-            if (EsBinario(valor) == false)
+            if (int.TryParse(valor, out int numeroDecimal))
             {
-                return valor.ToString();
+                if (numeroDecimal > 0)
+                {
+                    string binario = "";
+
+                    while (numeroDecimal > 0)
+                    {
+                        binario = numeroDecimal % 2 + binario;
+                        numeroDecimal /= 2;
+                    }
+                    
+                    return binario;
+                }
+                else
+                {
+                    return "Valor invalido";
+                }
             }
             else
             {
-                return "Numero Invalido";
+                return "Valor invalido";
             }
         }
 
@@ -133,11 +139,16 @@ namespace Entidades
         {
             foreach (char c in valor)
             {
-                if (c.ToString() != "0" || c.ToString() != "1")
+                if (c != '0' || c != '1')
                 {
                     return false;
                 }
+                else
+                {
+                    return true;
+                }
             }
+
             return true;
         }
 
@@ -150,7 +161,14 @@ namespace Entidades
             }
             else if (sistema == ESistema.Decimal)
             {
-                this.valorNumerico = double.Parse(valor);
+                try
+                {
+                    this.valorNumerico = double.Parse(valor);
+                }
+                catch (FormatException)
+                {
+                    this.valorNumerico = double.NaN;
+                }
             }
             else
             {
