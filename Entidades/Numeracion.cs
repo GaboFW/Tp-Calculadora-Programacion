@@ -47,7 +47,6 @@ namespace Entidades
             // Decimal a binario
             if (sistema == ESistema.Binario)
             {
-                // Si es decimal y lo queres convertir a binario
                 return this.DecimalABinario(this.Valor);
             }
             else
