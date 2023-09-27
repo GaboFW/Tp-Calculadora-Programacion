@@ -151,10 +151,14 @@ namespace Entidades
             return true;
         }
 
+        /// <summary>
+        /// Si los valores decimales que se vuelvan decimales
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <param name="sistema"></param>
         private void InicializarValores(string valor, ESistema sistema)
         {
-
-            if (!string.IsNullOrEmpty(valor) && (sistema == ESistema.Binario))
+            if (sistema == ESistema.Binario)
             {
                 this.valorNumerico = BinarioADecimal(valor);
             }
