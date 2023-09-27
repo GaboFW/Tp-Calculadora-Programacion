@@ -5,4 +5,4 @@
 
 ![Calculadora](https://github.com/GaboFW/Tp-Calculadora-Programacion/assets/124210646/8f289f90-9afa-4006-b901-ca01d0c3f7b3)
 
-### Hecho con C# y .NET usando Visual Studio 2022
+### Hecho con C# y .NET usando WinForms, POO, sobrecarga de operadores comparativos y logicos en Visual Studio 2022
