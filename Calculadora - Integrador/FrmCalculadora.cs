@@ -59,7 +59,7 @@ namespace Calculadora___Integrador
 
             this.resultado = calculadora.Operar(operador);
 
-            SetResultado();
+           SetResultado();
         }
 
         private void rdbBinario_CheckedChanged(object sender, EventArgs e)
@@ -67,6 +67,7 @@ namespace Calculadora___Integrador
             if (rdbBinario.Checked)
             {
                 this.sistema = ESistema.Binario;
+                SetResultado();
             }
         }
 
@@ -75,11 +76,17 @@ namespace Calculadora___Integrador
             if (rdbDecimal.Checked)
             {
                 this.sistema = ESistema.Decimal;
+                SetResultado();
             }
         }
 
         private void SetResultado()
         {
+            if (resultado is null)
+            {
+                return;
+            }
+
             this.labelResultado.Text = resultado.ConvertirA(this.sistema);
         }
 

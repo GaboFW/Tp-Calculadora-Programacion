@@ -184,11 +184,12 @@ namespace Entidades
         {
             return numeracion.sistema != sistema;
         }
-
+        
         public static bool operator !=(Numeracion n1, Numeracion n2)
         {
-            return n1.sistema != n2.sistema;
+            return n1.sistema != n2.sistema; //un error
         }
+        
         public static bool operator ==(ESistema sistema, Numeracion numeracion)
         {
             return numeracion.sistema == sistema;
