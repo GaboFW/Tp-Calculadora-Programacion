@@ -118,14 +118,14 @@
             this.cmbOperacion.Location = new System.Drawing.Point(301, 342);
             this.cmbOperacion.Name = "cmbOperacion";
             this.cmbOperacion.Size = new System.Drawing.Size(121, 21);
-            this.cmbOperacion.TabIndex = 5;
+            this.cmbOperacion.TabIndex = 2;
             // 
             // txtPrimerOperando
             // 
             this.txtPrimerOperando.Location = new System.Drawing.Point(23, 343);
             this.txtPrimerOperando.Name = "txtPrimerOperando";
             this.txtPrimerOperando.Size = new System.Drawing.Size(207, 20);
-            this.txtPrimerOperando.TabIndex = 6;
+            this.txtPrimerOperando.TabIndex = 1;
             this.txtPrimerOperando.TextChanged += new System.EventHandler(this.txtPrimerOperando_TextChanged);
             // 
             // txtSegundoOperando
@@ -133,7 +133,7 @@
             this.txtSegundoOperando.Location = new System.Drawing.Point(474, 343);
             this.txtSegundoOperando.Name = "txtSegundoOperando";
             this.txtSegundoOperando.Size = new System.Drawing.Size(239, 20);
-            this.txtSegundoOperando.TabIndex = 7;
+            this.txtSegundoOperando.TabIndex = 3;
             this.txtSegundoOperando.TextChanged += new System.EventHandler(this.txtSegundoOperando_TextChanged);
             // 
             // btnOperar
@@ -141,7 +141,7 @@
             this.btnOperar.Location = new System.Drawing.Point(23, 385);
             this.btnOperar.Name = "btnOperar";
             this.btnOperar.Size = new System.Drawing.Size(207, 43);
-            this.btnOperar.TabIndex = 8;
+            this.btnOperar.TabIndex = 4;
             this.btnOperar.Text = "Operar";
             this.btnOperar.UseVisualStyleBackColor = true;
             this.btnOperar.Click += new System.EventHandler(this.btnOperar_Click);
@@ -151,7 +151,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(301, 385);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(121, 43);
-            this.btnLimpiar.TabIndex = 9;
+            this.btnLimpiar.TabIndex = 5;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -161,7 +161,7 @@
             this.btnCerrar.Location = new System.Drawing.Point(474, 385);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(239, 43);
-            this.btnCerrar.TabIndex = 10;
+            this.btnCerrar.TabIndex = 6;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
