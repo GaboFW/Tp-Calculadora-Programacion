@@ -36,7 +36,7 @@ namespace Entidades
                 return valorNumerico.ToString();
             }
         }
-        
+
         /// <summary>
         /// Convertir el valor decimal a binario y viceversa
         /// </summary>
@@ -54,7 +54,7 @@ namespace Entidades
                 return this.Valor;
             }
         }
-        
+
         /// <summary>
         /// De binario a decimal
         /// </summary>
@@ -115,7 +115,7 @@ namespace Entidades
                         binario = numeroDecimal % 2 + binario;
                         numeroDecimal /= 2;
                     }
-                    
+
                     return binario;
                 }
                 else
@@ -184,12 +184,12 @@ namespace Entidades
         {
             return numeracion.sistema != sistema;
         }
-        
+
         public static bool operator !=(Numeracion n1, Numeracion n2)
         {
-            return n1.sistema != n2.sistema; //un error
+            return n1.sistema != n2.sistema;
         }
-        
+
         public static bool operator ==(ESistema sistema, Numeracion numeracion)
         {
             return numeracion.sistema == sistema;

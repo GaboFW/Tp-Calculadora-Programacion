@@ -59,7 +59,7 @@ namespace Calculadora___Integrador
 
             this.resultado = calculadora.Operar(operador);
 
-           SetResultado();
+            SetResultado();
         }
 
         private void rdbBinario_CheckedChanged(object sender, EventArgs e)
